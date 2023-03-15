@@ -2,7 +2,9 @@ import React from 'react'
 import { FaTimes, FaPencilAlt } from 'react-icons/fa';
 import CardStyle from './CardStyle';
 
-function Card({ item, deleteListItem }) {
+function Card({ item, deleteListItem, cloneListItem }) {
+
+
     return (
         <>
             <CardStyle>
@@ -11,7 +13,8 @@ function Card({ item, deleteListItem }) {
                         <a href="#" onClick={() => deleteListItem(item.id)}>
                             <FaTimes />
                         </a>
-                        <a href="#" className='p-3'>
+                        <a href="#" className='p-3'
+                            onClick={() => { cloneListItem(item.id) }}>
                             <FaPencilAlt />
                         </a>
                     </div>

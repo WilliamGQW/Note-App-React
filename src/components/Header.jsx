@@ -16,8 +16,8 @@ function Header() {
             <div className='col-md-8 offset-2 mt-5'>
                 <div className="card">
                     <div className="card-body">
-                        <div class="position-relative">
-                            <div class="position-absolute top-50 start-50 translate-middle">
+                        <div className="position-relative">
+                            <div className="position-absolute top-50 start-50 translate-middle">
                                 Total notes: 50(default)
                             </div>
                         </div>
