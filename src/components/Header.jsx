@@ -1,7 +1,7 @@
 import React from 'react'
 
 // rfce
-function Header() {
+function Header({ listCount }) {
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,7 +18,7 @@ function Header() {
                     <div className="card-body">
                         <div className="position-relative">
                             <div className="position-absolute top-50 start-50 translate-middle">
-                                Total notes: 50(default)
+                                Total notes: {listCount}
                             </div>
                         </div>
                     </div>

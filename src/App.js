@@ -31,6 +31,7 @@ function App() {
     // states
     const [list, setList] = useState(listData);
     const [currentSelectedItem, setCurrentSelectedItem] = useState();
+    const [cloningInitialized, setCloneInit] = useState(false);
 
     // remove list item
     //  by filtering out unmatched id
@@ -41,13 +42,17 @@ function App() {
     // store a new list item to the list of data
     const storeNewListItem = (e) => {
         // let newList = [...list, e]; // add to tail
-        let newList = [e, ...list]; // add to head
-        setList(newList);
-        // console.log(newList);
+        if (e && e.text) {
+            let newList = [e, ...list]; // add to head
+            setList(newList);
+        }
+
+
 
         // or...
         // let newList = [];
         // list.map((item) => {
+
         //     newList.push(item);
         // })
         // newList.unshift(e);
@@ -57,20 +62,26 @@ function App() {
     // clone the list item values;
     const cloneCurrentItem = (id) => {
         //filter out the item from list which has the same id as the current item id.
-        console.log(id);
+        // console.log(id);
         setCurrentSelectedItem(list.filter((item) =>
             item.id === id
         ));
 
     }
 
+    const cloneInitFunc = (response) => {
+        setCloneInit(response);
+    }
+
     return (
         <>
-            <Header />
+            <Header listCount={list.length} />
             <Form store={storeNewListItem}
-                currentSelected={currentSelectedItem} />
+                currentSelected={currentSelectedItem}
+                cloningInitialized={cloningInitialized} />
             <List list={list} deleteListItem={deleteCurrentItem}
-                cloneListItem={cloneCurrentItem} />
+                cloneListItem={cloneCurrentItem}
+                cloningInitialized={cloneInitFunc} />
         </>
     )
 }
